@@ -13,6 +13,7 @@ body {
 
 h1 {
     margin: 20px 0;
+    align-items: center;
 }
 
 div {
@@ -149,18 +150,23 @@ body.dark-mode {
     font-size: 20px;
 }
 
-/* ハンバーガーアイコン */
-#header {
-    display: flex;
-    justify-content: center; /* 題名を中央に配置 */
-    flex-direction: column; /*要素を縦方向に並べる
-    align-items: center; /* 要素を中央揃えにする */
-}
 
-#hamburgerIcon {
-    align-self: flex-end; /* ハンバーガーアイコンを右端に配置 */
-    margin-top: 10px; /* 題名との間隔を設定 */
-}
+/* スクロールバーのスタイル */
+#output::-webkit-scrollbar {
+    width: 12px; /* スクロールバーの幅 */
+  }
+  
+  /* スクロールバーのトラック（スクロールバー自体の背景） */
+  #output::-webkit-scrollbar-track {
+    background: #f1f1f1; /* スクロールバーの背景色 */
+  }
+  
+  /* スクロールバーのハンドル（スクロールされる部分） */
+  #output::-webkit-scrollbar-thumb {
+    background: #888; /* スクロールバーの色 */
+  }
 
-
-
+  #output {
+    height: 800px; /* 表示領域の高さを増やす */
+    overflow-y: auto; /* メッセージが表示領域を超える場合にスクロールバーを表示 */
+  }

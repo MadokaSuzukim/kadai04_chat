@@ -2,89 +2,30 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Chat App</title>
 <link rel="stylesheet" href="style.css"> 
     <!-- 設定内容 -->
 </head>
 <body>
-    <div id="appTitle">
         <h1>My Chat App</h1>
-    </div>
-    <div id="header">
-        <div id="hamburgerIcon">&#9776;<span class="tooltip-text">設定</span></div>
-    </div>
-    <div id="settings" style="display: none;">
-        <!-- 設定内容 -->
-        <div>
-            <input type="email" id="email" placeholder="メールアドレス">
-            <input type="password" id="password" placeholder="パスワード">
-            <button id="signup">サインアップ</button>
-            <button id="login">ログイン</button>
-            <button id="logout">ログアウト</button>
-        </div>
-    
-        <script src="chat.js"></script>
-        <div>
-            <label for="fontSize">フォントサイズ:</label>
-            <select id="fontSize">
-                <option value="small">小さい</option>
-                <option value="medium" selected>標準</option>
-                <option value="large">大きい</option>
-            </select>
-        </div>
-        <div>
-            <label for="theme">テーマ:</label>
-            <select id="theme">
-                <option value="light" selected>ライトモード</option>
-                <option value="dark">ダークモード</option>
-            </select>
-        </div>
-        <div>
-            <label for="language">言語:</label>
-            <select id="language">
-                <option value="ja" selected>日本語</option>
-                <option value="en">English</option>
-            </select>
-        </div>
-    </div>
-       
-    
-    <!-- 設定内容 -->
-    <div>
-        <input type="text" id="searchQuery" placeholder="メモを検索...">
-        <button id="searchButton">検索</button>
-    </div>
+ <!-- 設定内容 -->
 <!-- コンテンツ表示画面 -->
 <div> 
     名前：<input type="text" id="uname"> 
 </div>
 <div style="display: flex; align-items: center;">
     <div>
-        日付：<input type="date" id="day">
-    </div>
-    <div style="margin-left: 10px;">
-        <label for="category">カテゴリ:</label>
-        <select id="category">
-            <option value="仕事">仕事</option>
-            <option value="個人">個人</option>
-            <option value="家庭">家庭</option>
-            <!-- 他のカテゴリオプション -->
-        </select>
+        日付：<input type="datetime-local" id="datetime">
     </div>
 </div>
 <div>
     <textarea id="text" cols="30" rows="10"></textarea>
     <button id="send">送信</button>
 </div>
-<!-- <div id="output" style="overflow: auto;height: auto;"></div> -->
 
-<div id="shareButtons">
-    <button id="shareOnLine">LINEで共有</button>
-    <button id="shareOnTwitter">Twitterで共有</button>
-</div>
+<div id="output" style="overflow: auto;height: auto;"></div>
 <!--/ コンテンツ表示画面 -->
-
-
 
 <!-- JQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -117,61 +58,63 @@
 
 
     // 送信
-    $("#send").on("click",function() {
+$("#send").on("click", function () {
     const msg = {
         uname: $("#uname").val(),
-        day: $("#day").val(),
-        text: $("#text").val()
+        // day: $("#day").val(),
+        text: $("#text").val(),
+        datetime: new Date().toISOString() // 現在の日時をISO形式で取得し、datetimeプロパティに追加
     }
     // console.log(msg); //チェックしたら消す
-    const newPostRef = push(dbRef); //ユニークキーを生成
-    set(newPostRef, msg);           //"chat"にユニークKEYをつけてオブジェクトデータを登録
+    const newPostRef = push(dbRef); // ユニークキーを生成
+    set(newPostRef, msg); // "chat"にユニークKEYをつけてオブジェクトデータを登録
     console.log(newPostRef);//これをみたら、どういう処理なんかわかる！
 });
+
     // 受診
+    // カテゴリー情報を受信する
     onChildAdded(dbRef, function (data) {
-        const msg =data.val();
-        const key =data.key; //ユニークキー 削除・更新に必須
-        let h ='<p id="'+key+'">';
-            h += msg.uname;
-            h += msg.day;
-            h += '<span contentEditable="true"id="'+key+'_update">'+msg.text+'</span>';
-            h += '<span class="remove" data-key="'+key+'">🚮</span>'
-            h += '<span class="update" data-key="'+key+'">🆙</span>'
-            // h += msg.text;
-            h +='</p>';
-            $("#output").prepend(h);
+    const msg = data.val();
+    const key = data.key; // ユニークキー
+    let h = '<p id="' + key + '">'; // カテゴリー情報はここでは使用しない
+    h += msg.uname + " ";
+    if (msg.datetime) { // datetime プロパティが存在する場合のみ時間を表示
+        h += msg.datetime + " ";
+    }
+    h += '<span contentEditable="true" id="' + key + '_update">' + msg.text + '</span>';
+    h += '<span class="remove" data-key="' + key + '">🚮</span>';
+    h += '<span class="update" data-key="' + key + '">🆙</span>';
+    h += '</p>';
+    $("#output").prepend(h);
 });
 
-    // 削除イベント
-    $("#output").on("click",".remove",function(){
-        const key = $(this).atte("data-key");
-        const remove_item = ref(db,"chat/+key");
-        remove(remove_item);//Firebaseデータ削除関数
-    });
+// 削除イベント
+$("#output").on("click", ".remove", function () {
+    const key = $(this).attr("data-key");
+    const remove_item = ref(db, "chat/" + key); // 参照先を修正
+    remove(remove_item); //Firebaseデータ削除関数
+});
 
-    // 更新イベント
-    $("#output").on("click", ".update", function() {
-        const key = $(this).attr("data-key");
-        update(ref(db, "chat/"+key),{
-            text:$("#" + key+'_update').html()
-
-        });
+// 更新イベント
+$("#output").on("click", ".update", function () {
+    const key = $(this).attr("data-key");
+    update(ref(db, "chat/" + key), {
+        text: $("#" + key + '_update').html()
     });
+});
 
 // 削除処理がFirebase側で実行されたら
-onChildRemoved(dbRef, (data) =>{
-    $("#"+data.key).remobe(); //DOM操作関数（対象を削除）
-})
-
-// 更新処理がFirebase側でじっこうされたらイベント発生！
-onChildChanged(dbRef, (data) =>{
-  $("#"+data.key+'_update').html(data.val().text);
-  $("#"+data.key+'_update').fadeOut(800).fadeIn(800);
+onChildRemoved(dbRef, (data) => {
+    $("#" + data.key).remove(); //DOM操作関数（対象を削除）
 });
+
+// 更新処理がFirebase側で実行されたらイベント発生！
+onChildChanged(dbRef, (data) => {
+    $("#" + data.key + '_update').html(data.val().text);
+    $("#" + data.key + '_update').fadeOut(800).fadeIn(800);
+});
+
 </script>
-<!-- <script src="chat.js"></script> -->
-<script type="module" src="chat.js"></script>
 </body>
 </html>
 
