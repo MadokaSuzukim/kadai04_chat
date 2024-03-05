@@ -4,12 +4,14 @@ body {
     padding: 0;
     background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
     color: #fff;
-    height: 100vh;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column; /* 要素を縦方向に並べる */
+    align-items: center; /* 要素を中央揃えにする */
     justify-content: center;
+    height: 100vh;
 }
+
+/* 以下は既存のスタイルと同じ */
 
 h1 {
     margin: 20px 0;
@@ -21,6 +23,11 @@ div {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* メッセージごとの余白を追加 */
+#output > div {
+    margin-bottom: 20px;
 }
 
 input[type="text"], input[type="day"], textarea {
@@ -126,31 +133,6 @@ button:hover {
     }
 }
 
-/* ダークモード切り替え */
-body.light-mode {
-    background-color: #ffffff;
-    color: #000000;
-}
-
-body.dark-mode {
-    background-color: #333333;
-    color: #ffffff;
-}
-
-/* フォントサイズのカスタムクラス */
-.font-size-small {
-    font-size: 12px;
-}
-
-.font-size-medium {
-    font-size: 16px;
-}
-
-.font-size-large {
-    font-size: 20px;
-}
-
-
 /* スクロールバーのスタイル */
 #output::-webkit-scrollbar {
     width: 12px; /* スクロールバーの幅 */
@@ -170,3 +152,49 @@ body.dark-mode {
     height: 800px; /* 表示領域の高さを増やす */
     overflow-y: auto; /* メッセージが表示領域を超える場合にスクロールバーを表示 */
   }
+
+  /* ヘッダー部分のスタイル */
+#header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; /* アイコンを右端に配置 */
+    align-items: center;
+    padding: 10px;
+}
+
+/* ハンバーガーアイコンのスタイル */
+#hamburgerIcon {
+    cursor: pointer;
+    color: #fff;
+    font-size: 24px;
+    margin-right: 20px; /* アイコンと題名の間に余白を追加 */
+}
+
+/* ツールチップのテキストのスタイル */
+.tooltip-text {
+    visibility: hidden;
+    width: 120px;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* ツールチップのスタイル：表示状態 */
+.tooltip-text.show {
+    visibility: visible;
+    opacity: 1;
+}
+/* ハンバーガーメニューの後ろを空白にする */
+#header::after {
+    content: ""; /* 空のコンテンツを追加 */
+    flex-grow: 1; /* 残りのスペースを全て拡張 */
+}

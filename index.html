@@ -8,23 +8,23 @@
     <!-- 設定内容 -->
 </head>
 <body>
+    <div id="header">
+        <!-- ハンバーガーメニュー用のアイコン -->
+        <div id="hamburgerIcon">&#9776;<span class="tooltip-text">設定</span></div>
+    </div>
         <h1>My Chat App</h1>
  <!-- 設定内容 -->
 <!-- コンテンツ表示画面 -->
-<div> 
+<div>
     名前：<input type="text" id="uname"> 
-</div>
-<div style="display: flex; align-items: center;">
-    <div>
-        日付：<input type="datetime-local" id="datetime">
-    </div>
+    日付：<input type="date" id="day">
 </div>
 <div>
     <textarea id="text" cols="30" rows="10"></textarea>
     <button id="send">送信</button>
 </div>
-
 <div id="output" style="overflow: auto;height: auto;"></div>
+
 <!--/ コンテンツ表示画面 -->
 
 <!-- JQuery -->
