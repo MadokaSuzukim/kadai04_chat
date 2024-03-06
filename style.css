@@ -152,11 +152,4 @@ button:hover {
     height: 800px; /* 表示領域の高さを増やす */
     overflow-y: auto; /* メッセージが表示領域を超える場合にスクロールバーを表示 */
   }
-  footer {
-    width: 650px;
-    text-align: center;
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    /* box-sizing: border-box; 要素の幅にpaddingを含める */
-}
+ 
