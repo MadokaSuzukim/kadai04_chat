@@ -5,11 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Chat App</title>
 <link rel="stylesheet" href="style.css"> 
+
     <!-- 設定内容 -->
 </head>
 <body>
+    <footer>
+        MARUMARK
+    </footer>
         <h1>My Chat App</h1>
  <!-- 設定内容 -->
+
 <!-- コンテンツ表示画面 -->
 <div>
     名前：<input type="text" id="uname"> 
@@ -20,7 +25,6 @@
     <button id="send">送信</button>
 </div>
 <div id="output" style="overflow: auto;height: auto;"></div>
-
 <!--/ コンテンツ表示画面 -->
 
 <!-- JQuery -->
@@ -59,7 +63,8 @@ $("#send").on("click", function () {
         uname: $("#uname").val(),
         // day: $("#day").val(),
         text: $("#text").val(),
-        datetime: new Date().toISOString() // 現在の日時をISO形式で取得し、datetimeプロパティに追加
+        datetime: formattedDateTime // 指定した形式で日時を追加
+        // datetime: new Date().toISOString() // 現在の日時をISO形式で取得し、datetimeプロパティに追加
     }
     // console.log(msg); //チェックしたら消す
     const newPostRef = push(dbRef); // ユニークキーを生成
@@ -110,15 +115,20 @@ onChildChanged(dbRef, (data) => {
     $("#" + data.key + '_update').fadeOut(800).fadeIn(800);
 });
 
+const currentDate = new Date();
+const year = currentDate.getFullYear();
+const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+const day = String(currentDate.getDate()).padStart(2, '0');
+const hours = String(currentDate.getHours()).padStart(2, '0');
+const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+const seconds = String(currentDate.getSeconds()).padStart(2, '0');
+const formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+
 </script>
+
+<script src="chat.js"></script>
 </body>
 </html>
-
-
-
-
-
-
 
 
 
