@@ -159,6 +159,7 @@ button:hover {
 .affirmation-text {
     flex: 1; /* テキスト部分を残りのスペースいっぱいに拡大 */
 }
+
 .affirmation-actions {
     margin-left: 10px; /* ボタンとテキストの間の余白 */
 }
