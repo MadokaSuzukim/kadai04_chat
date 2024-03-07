@@ -113,3 +113,11 @@ document.querySelectorAll('.section-header').forEach(header => {
     });
   });
   
+  // セクションヘッダーがクリックされたときの処理
+document.querySelectorAll('.section-sengen').forEach(header => {
+    header.addEventListener('click', () => {
+      const content = header.nextElementSibling;
+      content.style.display = content.style.display === 'none' ? 'block' : 'none';
+    });
+  });
+  

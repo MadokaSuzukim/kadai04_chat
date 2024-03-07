@@ -209,3 +209,15 @@ footer {
     display: none; /* 最初は非表示 */
     padding: 10px;
   }
+
+  .section-sengen {
+    cursor: pointer;
+    user-select: none; /* テキストの選択を無効化 */
+    padding: 10px;
+    background-color: #4b48a9;
+    border-bottom: 1px solid #211c1c;
+  }
+  .section-sengent {
+    display: none; /* 最初は非表示 */
+    padding: 10px;
+  }
