@@ -12,7 +12,12 @@
     <footer>
         MARUMARK
     </footer>
-        <h1>My Chat App</h1>
+        <h1>My Self Taik App</h1>
+        <h3>STEP1:セルフトークを書き出す</h3>
+        <h3>STEP2:ネガティブなものとポジティブなものに分別する</h3>
+        <h3>STEP3：ネガティブな自分を肯定的に受け止める</h3>
+        <h3>STEP4：理想の自分をイメージする</h3>
+        <h3>STEP5：アファメーションを追加する</h3>
  <!-- 設定内容 -->
 
 <!-- コンテンツ表示画面 -->
@@ -26,15 +31,31 @@
 </div>
 <div id="output" style="overflow: auto;height: auto;"></div>
 <!--/ コンテンツ表示画面 -->
+<h4>無意識に起こるセルフトークを変えることは難しそうですが、意識的にセルフトークをコントロールすることで、考え方のクセを変えることができます。</h4>
+<!-- アファメーション一覧 -->
+<h1>Affirmations</h1>
+<!-- アファメーション一覧の欄 -->
+<div id="affirmationListContainer">
+    <h5 ul="affirmationList"></h5>
+</div>
+
+<!-- ユーザーが入力したアファメーションを受け付けるフォーム -->
+<div>
+    <input type="text" id="newAffirmation" placeholder="新しいアファメーションを入力">
+    <button id="addAffirmation">追加</button>
+</div>
+
 
 <!-- JQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!--** 以下Firebase **-->
 <script type="module">
     // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-    import { getDatabase, ref, push, set,update,remove, onChildAdded, onChildChanged, onChildRemoved }
-    from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+    // Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+import { getDatabase, ref, push, set, update, remove, onChildAdded, onChildChanged, onChildRemoved }
+from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+    
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
   
@@ -50,6 +71,7 @@
       appId: "1:375259169680:web:f510004f6764f128542915",
       measurementId: "G-3JB40K3NG4"
     };
+    
   
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
@@ -123,7 +145,6 @@ const hours = String(currentDate.getHours()).padStart(2, '0');
 const minutes = String(currentDate.getMinutes()).padStart(2, '0');
 const seconds = String(currentDate.getSeconds()).padStart(2, '0');
 const formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-
 </script>
 
 <script src="chat.js"></script>
