@@ -5,11 +5,15 @@ $(document).ready(function() {
     // ローカルストレージからアファメーションを取得して表示する
     displayAffirmations();
 
+
     // 「追加」ボタンがクリックされたときの処理
-    $("#addAffirmation").on("click", function() {
-        var newAffirmation = $("#newAffirmation").val();
-        addAffirmation(newAffirmation);
-    });
+$("#addAffirmation").on("click", function() {
+    var newAffirmation = $("#newAffirmation").val();
+    addAffirmation(newAffirmation);
+
+    // アファメーションを追加した後に画面を更新
+    updateAffirmations();
+});
 
     // アファメーション一覧の削除ボタンがクリックされたときの処理
     $(document).on("click", ".remove", function() {
