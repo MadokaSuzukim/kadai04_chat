@@ -1,17 +1,10 @@
 body {
-    /* font-family: 'Arial', sans-serif; */
-    /* margin: 0; */
-    /* padding: 0; */
     background: linear-gradient(to right, #782acb 0%, #2575fc 100%);
     color: #fff;
     display: flex;
     flex-direction: column; /* 要素を縦方向に並べる */
     align-items: center; /* 要素を中央揃えにする */
-    /* justify-content: center; */
-
 }
-
-/* 以下は既存のスタイルと同じ */
 
 h1 {
     margin: 20px 0;
@@ -22,7 +15,6 @@ div {
     background: rgba(255, 255, 255, 0.2);
     padding: 20px;
     border-radius: 10px;
-    /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); */
 }
 #output {
     max-height: 150px; /* 最大の高さを指定（必要に応じて調整） */
@@ -69,16 +61,13 @@ button:hover {
 
 .remove, .update {
     cursor: pointer;
-    /* margin-left: 10px; */
 }
 
 .remove:hover, .update:hover {
     opacity: 0.7;
 }
 
-
-/* レスポンシブ流デザイン
-/* スマートフォンや小さなデバイス向けのスタイル */
+/* レスポンシブ流デザイン スマートフォンや小さなデバイス向けのスタイル */
 @media (max-width: 600px) {
     body {
         padding: 20px;
@@ -142,43 +131,34 @@ button:hover {
     }
 } */
 
-/* スクロールバーのスタイル */
-#output::-webkit-scrollbar {
+  /* スクロールバーのスタイル */
+  #output::-webkit-scrollbar {
     width: 12px; /* スクロールバーの幅 */
   }
-  
   /* スクロールバーのトラック（スクロールバー自体の背景） */
   #output::-webkit-scrollbar-track {
     background: #f1f1f1; /* スクロールバーの背景色 */
   }
-  
   /* スクロールバーのハンドル（スクロールされる部分） */
   #output::-webkit-scrollbar-thumb {
     background: #888; /* スクロールバーの色 */
   }
-
   #output {
     height: 800px; /* 表示領域の高さを増やす */
     overflow-y: auto; /* メッセージが表示領域を超える場合にスクロールバーを表示 */
   }
  
-
-
-
 #affirmationListContainer {
     max-height: 200px; /* 適切な高さを設定 */
     overflow-y: auto;
 }
-
 .affirmation-item {
     display: flex; /* 要素を横並びにする */
     align-items: center; /* 要素を中央揃えにする */
 }
-
 .affirmation-text {
     flex: 1; /* テキスト部分を残りのスペースいっぱいに拡大 */
 }
-
 .affirmation-actions {
     margin-left: 10px; /* ボタンとテキストの間の余白 */
 }
