@@ -4,6 +4,7 @@ body {
     display: flex;
     flex-direction: column; /* 要素を縦方向に並べる */
     align-items: center; /* 要素を中央揃えにする */
+    
 }
 
 h1 {
@@ -11,9 +12,8 @@ h1 {
     align-items: center;
 }
 div {
-    background: rgba(255, 255, 255, 0.2);
     padding: 20px;
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
 #output {
     max-height: 150px; /* 最大の高さを指定（必要に応じて調整） */
@@ -143,7 +143,7 @@ button:hover {
     background: #888; /* スクロールバーの色 */
   }
   #output {
-    height: 800px; /* 表示領域の高さを増やす */
+    height: 400px; /* 表示領域の高さを増やす */
     overflow-y: auto; /* メッセージが表示領域を超える場合にスクロールバーを表示 */
   }
  
@@ -180,12 +180,32 @@ footer {
     background-size: cover; /* 画像をウィンドウ全体に広げる */
     background-position: center; /* 画像を中央に配置 */
     background-repeat: no-repeat; /* 画像を繰り返し表示しない */
-    padding: 40px; /* ヘッダーの余白 */
+    padding: 60px; /* ヘッダーの余白 */
     text-align: center; /* テキストを中央揃え */
 }
 
 .header h1 {
-    color: white; /* テキストの色を白に設定 */
+    color: rgb(29, 25, 25); /* テキストの色を白に設定 */
     margin: 0; /* マージンをリセット */
-    padding: 20px; /* テキストの余白 */
+    padding: 10px; /* テキストの余白 */
+    background-color: rgb(231, 157, 157); /* 背景色を設定 */
+    display: inline-block; /* テキストをブロック要素として扱う */
 }
+
+.section {
+    border: 1px solid #241d1d;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    align-items: center; /* 要素を中央揃えにする */
+  }
+  .section-header {
+    cursor: pointer;
+    user-select: none; /* テキストの選択を無効化 */
+    padding: 10px;
+    background-color: #4b48a9;
+    border-bottom: 1px solid #211c1c;
+  }
+  .section-content {
+    display: none; /* 最初は非表示 */
+    padding: 10px;
+  }

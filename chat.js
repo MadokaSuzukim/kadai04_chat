@@ -104,3 +104,12 @@ function updateAffirmations() {
     // アファメーション一覧を再度表示
     displayAffirmations();
 }
+
+// セクションヘッダーがクリックされたときの処理
+document.querySelectorAll('.section-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const content = header.nextElementSibling;
+      content.style.display = content.style.display === 'none' ? 'block' : 'none';
+    });
+  });
+  
