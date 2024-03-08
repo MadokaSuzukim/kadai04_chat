@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(to right, #782acb 0%, #2575fc 100%);
+    background: linear-gradient(to right, #ee89b5 0%, #be89bd 100%);
     color: #fff;
     display: flex;
     flex-direction: column; /* 要素を縦方向に並べる */
@@ -44,7 +44,7 @@ button {
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #4c99af;
+    background-color: #f03c7b;
     color: white;
     cursor: pointer;
 }
@@ -168,7 +168,7 @@ button:hover {
 /* フッター指定 */
 footer {
     text-align: center; /* 中央揃え */
-    background-color: rgb(109, 146, 227); /* グレーの背景色 */
+    background-color: rgb(141, 143, 147); /* グレーの背景色 */
     padding: 20px; /* 適切な余白を追加 */
     margin: 20px 0;
     width: 100%; /* 幅を100%に設定 */
@@ -202,7 +202,7 @@ footer {
     cursor: pointer;
     user-select: none; /* テキストの選択を無効化 */
     padding: 10px;
-    background-color: #4b48a9;
+    background-color: rgb(181, 175, 175);
     border-bottom: 1px solid #211c1c;
   }
   .section-content {
@@ -214,8 +214,10 @@ footer {
     cursor: pointer;
     user-select: none; /* テキストの選択を無効化 */
     padding: 10px;
-    background-color: #4b48a9;
+    background-color: rgb(181, 175, 175);
     border-bottom: 1px solid #211c1c;
+    text-align: center; /* テキストを中央揃え */
+    margin: 10px; /* マージンをリセット */
   }
   .section-sengent {
     display: none; /* 最初は非表示 */
